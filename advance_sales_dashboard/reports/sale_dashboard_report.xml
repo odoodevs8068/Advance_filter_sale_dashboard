@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <template id="sale_order_report">
+        <t t-call="web.html_container">
+        <t t-call="web.basic_layout">
+            <style>
+                .header, .footer {
+                    padding: 5px 0;
+                    margin: 0;
+                }
+            </style>
+            <t t-set="title">Sales Dashboard Report</t>
+            <div class="page">
+                <div class="oe_structure"/>
+                <div style="text-align: center; margin-top:1%">
+                    <h2>Sales REPORT</h2>
+                    <t t-if="date_from">
+                        <p>Date Range: <t t-esc="date_from"/> to <t t-esc="date_to"/></p>
+                    </t>
+                </div>
+                <br/>
+                <table style="width: 100%; text-align: center;">
+                    <tr>
+                        <td><h5>Total Sales: <t t-esc="total_sales"/></h5></td>
+                        <td><h5>Total Products Sold: <t t-esc="total_products_sold"/></h5></td>
+                        <td><h5>Total Customers: <t t-esc="total_customers"/></h5></td>
+                        <td><h5>Total Sale Amount: <t t-esc="formatted_total_sale_amount"/></h5></td>
+                    </tr>
+                </table>
+                <br/>
+                <h4>Sales Order Details</h4>
+                <t t-foreach="sales_list" t-as="sales">
+                    <h4>Sale Order: <t t-esc="sales['sale_order_id']"/> / Customer: <t t-esc="sales['partner_id']"/> - <t t-esc="sales['city']"/>, <t t-esc="sales['country_id']"/></h4>
+                    <p>Delivery Date: <t t-esc="sales['delivery_date']"/></p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Currency</th>
+                                <th>Unit Price</th>
+                                <th>Ordered Qty</th>
+                                <th>Qty Delivered</th>
+                                <th>Balance Qty Delivered</th>
+                                <th>Invoice Qty</th>
+                                <th>Invoice Amount</th>
+                                <th>Balance Amount to Invoice</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="sales['order_line']" t-as="line">
+                                <tr>
+                                    <td><t t-esc="line['product_id']"/></td>
+                                    <td><t t-esc="line['currency_id']"/></td>
+                                    <td><t t-esc="line['unit_price']"/></td>
+                                    <td><t t-esc="line['ordered_qty']"/></td>
+                                    <td><t t-esc="line['qty_delivered']"/></td>
+                                    <td><t t-esc="line['balance_qty_deliver']"/></td>
+                                    <td><t t-esc="line['invoiced_qty']"/></td>
+                                    <td><t t-esc="line['invoice_amount']"/></td>
+                                    <td><t t-esc="line['balance_amount_to_inv']"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+                <br/>
+                <div class="row" style="width:100%">
+                    <div style="width:50%">
+                        <h5>Top Products by Value</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="top_products_by_value" t-as="product">
+                                    <tr>
+                                        <td><t t-esc="product['product_name']"/></td>
+                                        <td><t t-esc="product['total_value']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:50%">
+                        <h5>Top Products by Quantity</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="top_products_by_quantity" t-as="product">
+                                    <tr>
+                                        <td><t t-esc="product['product_name']"/></td>
+                                        <td><t t-esc="product['total_quantity']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" style="width:100%">
+                    <div style="width:35%">
+                    <h5>Top Customers by Value</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="top_customers_by_value" t-as="customer">
+                                    <tr>
+                                        <td><t t-esc="customer['customer_name']"/></td>
+                                        <td><t t-esc="customer['total_value']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="width:35%">
+                    <h5>Top Countries by Value</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="top_countries_by_value" t-as="country">
+                                    <tr>
+                                        <td><t t-esc="country['country']"/></td>
+                                        <td><t t-esc="country['total_value']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="width:35%">
+                    <h5>Top Regions by Value</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Region</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="top_regions_by_value" t-as="region">
+                                    <tr>
+                                        <td><t t-esc="region['region_name']"/></td>
+                                        <td><t t-esc="region['total_value']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t></t>
+    </template>
+</odoo>

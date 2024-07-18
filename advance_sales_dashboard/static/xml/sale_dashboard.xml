@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="sales_dashboard" xml:space="preserve">
+
+    <t t-name="Sales_Dashboards">
+        <div class="Dashboard_main">
+        </div>
+        <div id="main_grad_1">
+            <div class="sale-card" id="sales">
+                <div class="row header">
+                    <p>Advance Filter Sales Dashboard</p>
+                </div>
+                <div class="sub_container_right row" style="margin-right: 7%;margin-left: 0;justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 115px;">
+                             <button type="button" id="print_pdf" class="btn btn-primary fa fa-download print_pdf mr-2"> Print PDF </button>
+                        </div>
+                        <div style="width: 112px;">
+                             <button type="button" id="print_xlsx" class="btn btn-primary fa fa-download print_xlsx mr-2"> Print XLSX </button>
+                        </div>
+                        <div class="time_range_sale" style="">
+                            <a type="button" class="dropdown-toggle"
+                               data-toggle="dropdown">
+                                <span class="fa fa-calendar" title="Dates" role="img"
+                                      aria-label="Dates"/>
+                                Date Range
+                            </a>
+                            <div class="dropdown-menu" role="menu">
+                                <div class="form-group">
+                                    <label class="" for="date_from">Start Date :</label>
+                                    <div class="input-group date" id="date_from"
+                                         data-target-input="nearest">
+                                        <input type="text" name="date_from" id="date_from"
+                                               class="form-control datetimepicker-input"
+                                               data-target="#date_from"
+                                               t-att-name="prefix"/>
+                                        <div class="input-group-append"
+                                             data-target="#date_from"
+                                             data-toggle="datetimepicker">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar" role="img"
+                                                      aria-label="Calendar"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <label class="" for="date_to">End Date :</label>
+                                    <div class="input-group date" id="date_to"
+                                         data-target-input="nearest">
+                                        <input type="text" name="date_to" id="date_to"
+                                               class="form-control datetimepicker-input"
+                                               data-target="#date_to"
+                                               t-att-name="prefix"/>
+                                        <div class="input-group-append"
+                                             data-target="#date_to"
+                                             data-toggle="datetimepicker">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar" role="img"
+                                                      aria-label="Calendar"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="apply_sale">
+                                        <button type="button" id="apply_filter"
+                                                class="btn btn-primary"
+                                                style="top: 0px; height: 42px; color: white; background-color: #7c7bad; border-color: #7c7bad; width: 100px;">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;align-items: center;width: 32%;">
+                        <div class="search-box">
+                            <button class="btn-search search_view">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <input type="text" data-hotkey="shift+e" class="input-search input" id="input" placeholder="Type to Search..."/>
+                        </div>
+                        <div class="display_list" role="menu" style="display: none;" id="drop_list">
+                            <div class="dropdown_view"></div>
+                        </div>
+                    </div>
+                    <div style="justify-content: right;">
+                        <div class="o-dropdown dropdown dropright filter_view show">
+                            <button class="dropdown-toggle dropdown-item focus" id="add_filter" style="color: white;margin-left: -14%;margin-top: -2%;" aria-expanded="true">
+                                <i class="big mr-1 fa fa-filter"></i> Add Filter
+                            </button>
+                            <div role="menu" class="o-dropdown--menu dropdown-menu" id="open_dropdown" style="top:15%; width: 16%;">
+                                <div class="o_filter_condition dropdown-item-text position-relative">
+                                    <select class="o_input o_filter_field" id="o_filter_field">
+                                        <option value="message_needaction" selected="">Action Needed</option><option value="activity_ids">Activities</option><option value="activity_exception_decoration">Activity Exception Decoration</option><option value="activity_state">Activity State</option><option value="activity_type_icon">Activity Type Icon</option><option value="analytic_account_id">Analytic Account</option><option value="campaign_id">Campaign</option><option value="company_id">Company</option><option value="create_uid">Created by</option><option value="create_date">Creation Date</option><option value="currency_id">Currency</option><option value="currency_rate">Currency Rate</option><option value="partner_id">Customer</option><option value="client_order_ref">Customer Reference</option><option value="partner_shipping_id">Delivery Address</option><option value="commitment_date">Delivery Date</option><option value="effective_date">Effective Date</option><option value="validity_date">Expiration</option><option value="fiscal_position_id">Fiscal Position</option><option value="message_follower_ids">Followers</option><option value="message_partner_ids">Followers (Partners)</option><option value="has_message">Has Message</option><option value="show_update_pricelist">Has Pricelist Changed</option><option value="id">ID</option><option value="incoterm">Incoterm</option><option value="partner_invoice_id">Invoice Address</option><option value="invoice_status">Invoice Status</option><option value="invoice_ids">Invoices</option><option value="message_is_follower">Is Follower</option><option value="write_uid">Last Updated by</option><option value="write_date">Last Updated on</option><option value="message_main_attachment_id">Main Attachment</option><option value="medium_id">Medium</option><option value="message_has_error">Message Delivery error</option><option value="my_activity_date_deadline">My Activity Deadline</option><option value="activity_date_deadline">Next Activity Deadline</option><option value="activity_summary">Next Activity Summary</option><option value="activity_type_id">Next Activity Type</option><option value="require_payment">Online Payment</option><option value="require_signature">Online Signature</option><option value="sale_order_option_ids">Optional Products Lines</option><option value="date_order">Order Date</option><option value="order_line">Order Lines</option><option value="name">Order Reference</option><option value="reference">Payment Ref.</option><option value="payment_term_id">Payment Terms</option><option value="pricelist_id">Pricelist</option><option value="procurement_group_id">Procurement Group</option><option value="sale_order_template_id">Quotation Template</option><option value="activity_user_id">Responsible User</option><option value="message_has_sms_error">SMS Delivery error</option><option value="team_id">Sales Team</option><option value="user_id">Salesperson</option><option value="access_token">Security Token</option><option value="picking_policy">Shipping Policy</option><option value="signature">Signature</option><option value="signed_by">Signed By</option><option value="signed_on">Signed On</option><option value="source_id">Source</option><option value="origin">Source Document</option><option value="state">Status</option><option value="tag_ids">Tags</option><option value="amount_tax">Taxes</option><option value="terms_type">Terms &amp; Conditions format</option><option value="note">Terms and conditions</option><option value="amount_total">Total</option><option value="transaction_ids">Transactions</option><option value="picking_ids">Transfers</option><option value="amount_untaxed">Untaxed Amount</option><option value="warehouse_id">Warehouse</option>
+                                    </select>
+
+                                    <select class="o_input o_filter_operator" id="o_filter_operator">
+                                        <option value="ilike" selected="">contains</option>
+                                        <option value="not ilike">doesn't contain</option>
+                                        <option value="=">is equal to</option>
+                                        <option value="!=">is not equal to</option>
+                                    </select>
+                                    <select class="o_input date_field_operators" id="date_field_operators">
+                                        <option value="between" selected="">is between</option>
+                                        <option value="=">is equal to</option>
+                                        <option value="!=">is not equal to</option>
+                                        <option value="&gt;">is after</option>
+                                        <option value="&lt;">is before</option>
+                                        <option value="&gt;=">is after or equal to</option>
+                                        <option value="&lt;=">is before or equal to</option>
+                                        <option value="!=">is set</option>
+                                        <option value="=">is not set</option>
+                                    </select>
+                                    <select class="o_input set_not_set_operator" id="set_not_set_operator">
+                                        <option value="=" selected="">is</option>
+                                        <option value="!=">is not</option>
+                                        <option value="!=">is set</option>
+                                        <option value="=">is not set</option>
+                                    </select>
+                                    <select class="o_input values_operator" id="values_operator">
+                                        <option value="=" selected="">is equal to</option>
+                                        <option value="!=">is not equal to</option>
+                                        <option value="&gt;">greater than</option>
+                                        <option value="&lt;">less than</option>
+                                        <option value="&gt;=">greater than or equal to</option>
+                                        <option value="&lt;=">less than or equal to</option>
+                                        <option value="!=">is set</option>
+                                        <option value="=">is not set</option>
+                                    </select>
+                                    <select class="o_input id_operator" id="id_operator">
+                                        <option value="=" selected="">is</option>
+                                        <option value="&lt;=">less than or equal to</option>
+                                        <option value="&gt;">greater than</option>
+                                    </select>
+                                    <span>
+                                        <input type="text" value="" id="o_filter_value" class="o_input o_filter_value"/>
+                                        <select class="o_input activity_exception_decoration" id="activity_exception_decoration">
+                                            <option value="warning">Alert</option>
+                                            <option value="danger">Error</option>
+                                        </select>
+                                        <select class="o_input activity_state" id="activity_state">
+                                            <option value="overdue">Overdue</option>
+                                            <option value="today">Today</option>
+                                            <option value="planned">Planned</option>
+                                        </select>
+                                        <select class="o_input invoice_status" id="invoice_status">
+                                            <option value="upselling">Upselling Opportunity</option>
+                                            <option value="invoiced">Fully Invoiced</option>
+                                            <option value="to invoice">To Invoice</option>
+                                            <option value="no">Nothing to Invoice</option>
+                                        </select>
+                                        <select class="o_input picking_policy" id="picking_policy">
+                                             <option value="direct">As soon as possible</option>
+                                             <option value="one">When all products are ready</option>
+                                         </select>
+                                        <select class="o_input state" id="state">
+                                            <option value="draft">Quotation</option>
+                                            <option value="sent">Quotation Sent</option>
+                                            <option value="sale">Sales Order</option>
+                                            <option value="done">Locked</option>
+                                            <option value="cancel">Cancelled</option>
+                                        </select>
+                                        <select class="o_input terms_type" id="terms_type">
+                                            <option value="plain">Add a Note</option>
+                                            <option value="html">Add a link to a Web Page</option>
+                                        </select>
+                                        <input type="datetime-local" name="date_from" class="o_input o_input_date_from" id="o_input_date_from" data-target="#o_input_date_from"/>
+                                        <input type="datetime-local" name="date_from" class="o_input o_input_date_to" id="o_input_date_to" data-target="#o_input_date_to"/>
+                                    </span>
+                                    <div class="px-3 py-2">
+                                        <button type="button" id="o_filter_apply" class="btn btn-primary o_filter_apply mr-2"> Apply </button>
+                                        <button type="button" id="o_filter_cancel" class="btn btn-primary o_filter_cancel mr-2"> Cancel </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row card_main_view_section" id="sales_card_section" style="width: 100%;justify-content: center;">
+                    <div class="card-container">
+                        <div class="card customers-card" >
+                            <div class="container">
+                                <div class="icon-container">
+                                    <img src="advance_sales_dashboard/static/img/customer.png" style="height: 38px; border-radius: 20px;"/>
+                                </div>
+                                <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;">Customers</h4>
+                                <h4 style="text-align: right;"><b><t t-esc="widget.sales_details['total_customers']"/></b></h4>
+                            </div>
+                        </div>
+                        <div class="card products-sold-card" >
+                            <div class="container">
+                                <div class="icon-container">
+                                    <img src="advance_sales_dashboard/static/img/product_sold.png" style="height: 38px; border-radius: 20px;"/>
+                                </div>
+                                <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Products Sold</b></h4>
+                                <h4 style="text-align: right;"><b><t t-esc="widget.sales_details['total_products_sold']"/></b></h4>
+                            </div>
+                        </div>
+                        <div class="card total-sales-card" >
+                            <div class="container">
+                                <div class="icon-container">
+                                    <img src="advance_sales_dashboard/static/img/total_sales.png" style="height: 38px; border-radius: 20px;"/>
+                                </div>
+                                <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Total Sales</b></h4>
+                                <h4 style="text-align: right;"><b><t t-esc="widget.sales_details['formatted_total_sale_amount']"/></b></h4>
+                            </div>
+                        </div>
+                        <div class="card total-revenue-card" >
+                            <div class="container">
+                                <div class="icon-container">
+                                    <img src="advance_sales_dashboard/static/img/revenue.png" style="height: 38px; border-radius: 20px;"/>
+                                </div>
+                                <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Total Revenue</b></h4>
+                                <h4 style="text-align: right;"><b><t t-esc="widget.sales_details['total_revenue']"/></b></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row status-card-row sales_main_status_card" id="status-card-row">
+                    <div class="status-card sales-order-status">
+                            <div class="total-sales-section">
+                                <div class="status-card-header">Total Sales
+                                    <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['total_sales_ids']}}" type="button">
+                                    <t t-esc="widget.sales_details['total_sales']"/></a>
+                                </div>
+                            </div>
+                            <div class="status-card-body">
+                                        <div class="status-section quotation-status-section">
+                                            <div class="quotation">Quotation
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['quotation_ids']}}" type="button">
+                                                    <t  t-esc="widget.sales_details['o_sales_details']['o_quotation']"/>
+                                                </a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_quotation_percent']}}%;
+                                                        background-color : #310b70a1">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_quotation_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-section sent-status-section">
+                                            <div class="sent">Sent
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['sent_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_sent']"/>
+                                            </a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_sent_percent']}}%;
+                                                        background-color : #a19a05cc">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_sent_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-section sales-status-section">
+                                            <div class="sale">Sale
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['sale_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_sale']"/></a>
+                                            </div>
+                                                <div class="progress-container">
+                                                    <div class="progress-bar"
+                                                         t-attf-style="width: {{widget.sales_details['o_sales_details']['o_sale_percent']}}%;
+                                                            background-color : #0d8528">
+                                                        <t t-esc="widget.sales_details['o_sales_details']['o_sale_percent']"/>%
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="status-section done-status-section">
+                                            <div class="done">Done
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['done_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_done']"/></a>
+                                            </div>
+                                                <div class="progress-container">
+                                                    <div class="progress-bar"
+                                                         t-attf-style="width: {{widget.sales_details['o_sales_details']['o_done_percent']}}%;
+                                                            background-color : #0d8528">
+                                                        <t t-esc="widget.sales_details['o_sales_details']['o_done_percent']"/>%
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="status-section cancel-status-section">
+                                            <div class="cancel">Cancel
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['cancel_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_cancel']"/></a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_cancel_percent']}}%;
+                                                            background-color : #7e0606">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_cancel_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    <div class="status-card">
+                            <div class="total-sales-section">
+                                <div class="status-card-header">Total Sales
+                                    <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['total_sales_ids']}}" type="button">
+                                    <t t-esc="widget.sales_details['total_sales']"/></a>
+                                </div>
+                            </div>
+                            <div class="status-card-body">
+                                        <div class="status-section upselling-status-section">
+                                            <div class="upselling">Upselling
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['upselling_ids']}}" type="button">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_upselling']"/>
+                                                </a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_upselling_percent']}}%;
+                                                        background-color : #310b70a1">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_upselling_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-section invoiced-status-section">
+                                            <div class="invoiced">Invoiced
+                                                <a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['invoiced_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_invoiced']"/></a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_invoiced_percent']}}%;
+                                                        background-color : #a19a05cc">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_invoiced_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-section to_invoice-status-section">
+                                            <div class="to_invoice">To Invoice<a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['to_invoice_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_to_invoice']"/></a>
+                                            </div>
+                                                <div class="progress-container">
+                                                    <div class="progress-bar"
+                                                         t-attf-style="width: {{widget.sales_details['o_sales_details']['o_to_invoice_percent']}}%;
+                                                            background-color : #0d8528">
+                                                        <t t-esc="widget.sales_details['o_sales_details']['o_to_invoice_percent']"/>%
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="status-section no-status-section">
+                                            <div class="no">Nothing To Invoice<a id="view_sales_status_records" t-attf-data-ids="{{widget.sales_details['o_sales_details']['no_ids']}}" type="button">
+                                                <t t-esc="widget.sales_details['o_sales_details']['o_no']"/></a>
+                                            </div>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"
+                                                     t-attf-style="width: {{widget.sales_details['o_sales_details']['o_no_percent']}}%;
+                                                            background-color : #7e0606">
+                                                    <t t-esc="widget.sales_details['o_sales_details']['o_no_percent']"/>%
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="scrollable-card" style="width: 77%;margin-left: 20%;height: 361px;"  id="sales_main_view">
+                    <div class="card-header " style="background-color: #dee2e6">Top Sale Orders Details</div>
+                    <div class="card-header " style="background-color: #dee2e6;text-align: right;margin-top: -37px;">
+                        <a id="create_sale_order" style="text-align: right" type="button"><i class="fa fa-plus"></i> Create</a>
+                    </div>
+                        <div class="card-body">
+                            <table class="scrollable-table top_sales_main_view">
+                                <thead>
+                                    <tr>
+                                        <th>S.No.</th>
+                                        <th>Number</th>
+                                        <th>Customer</th>
+                                        <th>Date</th>
+                                        <th>Salesperson</th>
+                                        <th>Status</th>
+                                        <th>Invoice Status</th>
+                                        <th>Total Amount</th>
+                                        <th>From View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="sl_no" t-value="1"/>
+                                    <t t-foreach="widget.sales_details['sales_list']" t-as="order">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="sl_no"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.number"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.customer"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.date_order"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.user_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.state"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.invoice_status"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.amount_total"/>
+                                            </td>
+                                            <td>
+                                                <a id="view_sales" t-attf-data-order-number="{{order.id}}" type="button"><i class="fa fa-eye"></i>
+                                                    View
+                                                </a>
+                                            </td>
+                                            <t t-set="sl_no" t-value="sl_no+1"/>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <div class="row" id="scroll-chart">
+                    <div class="scroll-card product_value" style="width: 37%;margin-left: 293px;max-height: 292px;">
+                        <div class="card-header " style="background-color: #dee2e6">
+                            Top Products By Value
+                        </div>
+                        <div class="card-body">
+                            <table class="scroll-table top_products_by_value">
+                                <thead>
+                                    <tr>
+                                        <th>S.No.</th>
+                                        <th>Product</th>
+                                        <th>Value</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="sl_no" t-value="1"/>
+                                    <t t-foreach="widget.top_products_by_value" t-as="value">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="sl_no"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="value.product_name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="value.total_value"/>
+                                            </td>
+                                            <td>
+                                                <a id="view_product" t-attf-data-id="{{value.product_id}}" type="button"><i class="fa fa-eye"></i>
+                                                    View
+                                                </a>
+                                            </td>
+                                            <t t-set="sl_no" t-value="sl_no+1"/>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="scroll-card customer_value" style="width: 40%;margin-left: 818px;max-height: 292px;">
+                            <div class="card-header " style="background-color: #dee2e6">Top Customers By Value</div>
+                            <div class="card-body">
+                                <table class="scroll-table top_customers_by_value">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Customers</th>
+                                            <th>Value</th>
+                                            <th>view</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sl_no" t-value="1"/>
+                                        <t t-foreach="widget.top_customers_by_value" t-as="value">
+                                            <tr>
+                                                <td>
+                                                    <span t-esc="sl_no"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="value.customer_name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="value.total_value"/>
+                                                </td>
+                                                <td>
+                                                    <a id="view_customer" t-attf-data-id="{{value.customer_id}}" type="button"><i class="fa fa-eye"></i>
+                                                        View
+                                                    </a>
+                                                </td>
+                                                <t t-set="sl_no" t-value="sl_no+1"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <div class="scroll-card region_value" style="width: 19%;margin-left: 2px;max-height: 292px;margin-top: -363px;">
+                        <div class="card-header " style="background-color: #dee2e6">Top Regions By Value</div>
+                            <div class="card-body">
+                                <table class="scroll-table top_regions_by_value">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Region</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sl_no" t-value="1"/>
+                                        <t t-foreach="widget.top_regions_by_value" t-as="region">
+                                            <tr>
+                                                <td>
+                                                    <span t-esc="sl_no"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="region.region_name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="region.total_value"/>
+                                                </td>
+                                                <t t-set="sl_no" t-value="sl_no+1"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                    <div class="scroll-card country_value" style="width: 37%;margin-left: 26px;max-height: 293px;margin-top: -363px;">
+                        <div class="card-header " style="background-color: #dee2e6">Top Country's By Value</div>
+                            <div class="card-body">
+                                <table class="scroll-table top_countries_by_value">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Country</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sl_no" t-value="1"/>
+                                        <t t-foreach="widget.top_countries_by_value" t-as="country">
+                                            <tr>
+                                                <td>
+                                                    <span t-esc="sl_no"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="country.country"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="country.total_value"/>
+                                                </td>
+                                                <t t-set="sl_no" t-value="sl_no+1"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                    <div class="scroll-card product_qty" style="width: 40%;margin-left: 823px;max-height: 292px;margin-top: -363px;">
+                        <div class="card-header " style="background-color: #dee2e6">Top Sold Products By Quantity</div>
+                            <div class="card-body">
+                                <table class="scroll-table top_products_by_quantity">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>view</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sl_no" t-value="1"/>
+                                        <t t-foreach="widget.top_products_by_quantity" t-as="qty">
+                                            <tr>
+                                                <td>
+                                                    <span t-esc="sl_no"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="qty.product_name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="qty.total_quantity"/>
+                                                </td>
+                                                <td>
+                                                    <a id="view_product" t-attf-data-id="{{qty.product_id}}" type="button"><i class="fa fa-eye"></i>
+                                                        View
+                                                    </a>
+                                                </td>
+                                                <t t-set="sl_no" t-value="sl_no+1"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+                <div class="row" style="margin-top: -37px;">
+                    <div class="col-md-5">
+                        <div class="chart_card line_chart" style="margin-bottom: 5px;background-color:white;width: 115%;height: 93%;">
+                            <div class="chart_card-body">
+                                <h4 class="chart_card-title"> <t t-esc="widget.current_year"/> Yearly Top Products By Quantity Line Chart</h4>
+                                <div class="chart_card-container" style="position: relative;height: 320px;">
+                                    <canvas id="yearlytopproudctsAreaChart" style="display: block;box-sizing: border-box;height: 266px;width: 533px;" width="532" height="266"></canvas>                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5" style="margin-left: 77px;">
+                        <div class="chart_card barchart" style="margin-bottom: 5px;background-color:white;width: 122%;height: 93%;">
+                            <div class="chart_card-body">
+                                <h4 class="chart_card-title"><t t-esc="widget.current_year"/> Yearly Top Products By Value Bar Chart</h4>
+                                <div class="chart_card-container" style="position: relative;height: 320px;">
+                                    <canvas id="TopproductsyearlybarChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 0px;margin-left: 0px;">
+                    <div style="width: 32%;">
+                        <div class="chart_card" style="margin-bottom: 5px; background-color:white; width: 90%; height: 100%;">
+                            <div class="chart_card-body">
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;"> <t t-esc="widget.current_year"/>'s Yearly Top Customer's By Value Radar Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="yearlytopproductsRadarChart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;"><t t-esc="widget.current_year"/>'s Yearly Top Region's By Value PolarArea Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="TopproductsyearlyPolarChart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left: -38px;width: 35%;">
+                        <div class="chart_card" style="margin-bottom: 5px; background-color:white; width: 90%; height: 100%;">
+                            <div class="chart_card-body">
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;">Weekly Top Products By Value Pie Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="topproductsweeklypiechart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div><br/>
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;"><t t-esc="widget.current_year"/>'s Yearly Top Countries By Value Doughnut Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="TopproductsyearlydoughnutChart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left: -39px;width: 37%;">
+                        <div class="chart_card" style="margin-bottom: 5px; background-color:white; width: 96%; height: 100%;">
+                            <div class="chart_card-body">
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;"><t t-esc="widget.current_year"/>'s Yearly Horizontal Bar Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="saleyearlybarChart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div><br/>
+                                <div>
+                                    <h4 class="chart_card-title" style="font-size: 15px; text-align: center;"><t t-esc="widget.current_year"/>'s Yearly Sales Status Chart</h4>
+                                    <div class="chart_card-container" style="position: relative; height: 400px;">
+                                        <canvas id="salestatusyearlybarChart" style="display: block; box-sizing: border-box; height: 266px; width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+<!-- Filter Update Section-->
+
+    <t t-name="SalesOrderRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="order.name"/></td>
+            <td><t t-esc="order.partner_id[1]"/></td>
+            <td><t t-esc="order.date_order"/></td>
+            <td><t t-esc="order.user_id[1]"/></td>
+            <td>
+                <t t-if="order.state == 'draft'">Quotation</t>
+                <t t-if="order.state == 'sent'">Quotation Sent</t>
+                <t t-if="order.state == 'done'">Done</t>
+                <t t-if="order.state == 'sale'">Sales Order</t>
+                <t t-if="order.state == 'cancel'">Cancelled</t>
+            </td>
+            <td>
+                <t t-if="order.invoice_status == 'upselling'">Upselling</t>
+                <t t-if="order.invoice_status == 'invoiced'">Fully Invoice</t>
+                <t t-if="order.invoice_status == 'to invoice'">To Invoice</t>
+                <t t-if="order.invoice_status == 'no'">Nothing to Invoice</t>
+            </td>
+            <td><t t-esc="order.amount_total"/></td>
+            <td>
+                <a id="view_sales" t-attf-data-order-number="{{order.id}}" type="button"><i class="fa fa-eye"></i> View</a>
+            </td>
+        </tr>
+    </t>
+    <t t-name="TopProductRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="product.product_name"/></td>
+            <td><t t-esc="product.total_value"/></td>
+            <td>
+                <a id="view_product" t-attf-data-id="{{product.product_id}}" type="button"><i class="fa fa-eye"></i> View</a>
+            </td>
+        </tr>
+    </t>
+    <t t-name="TopProductQtyRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="product.product_name"/></td>
+            <td><t t-esc="product.total_quantity"/></td>
+            <td>
+                <a id="view_product" t-attf-data-id="{{product.product_id}}" type="button"><i class="fa fa-eye"></i> View</a>
+            </td>
+        </tr>
+    </t>
+    <t t-name="TopCustomerRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="customer.customer_name"/></td>
+            <td><t t-esc="customer.total_value"/></td>
+            <td>
+                <a id="view_customer" t-attf-data-id="{{customer.customer_id}}" type="button"><i class="fa fa-eye"></i> View</a>
+            </td>
+        </tr>
+    </t>
+    <t t-name="TopRegionRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="region.region_name"/></td>
+            <td><t t-esc="region.total_value"/></td>
+        </tr>
+    </t>
+    <t t-name="TopCountryRow">
+        <tr>
+            <td><t t-esc="sl_no"/></td>
+            <td><t t-esc="country.country"/></td>
+            <td><t t-esc="country.total_value"/></td>
+        </tr>
+    </t>
+    <t t-name="CardMainViewSection">
+        <div class="card-container">
+            <div class="card customers-card" >
+                <div class="container">
+                    <div class="icon-container">
+                        <img src="advance_sales_dashboard/static/img/customer.png" style="height: 38px; border-radius: 20px;"/>
+                    </div>
+                    <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;">Customers</h4>
+                    <h4 style="text-align: right;"><b><t t-esc="sales_summary['total_customers']"/></b></h4>
+                </div>
+            </div>
+            <div class="card products-sold-card" >
+                <div class="container">
+                    <div class="icon-container">
+                        <img src="advance_sales_dashboard/static/img/product_sold.png" style="height: 38px; border-radius: 20px;"/>
+                    </div>
+                    <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Products Sold</b></h4>
+                    <h4 style="text-align: right;"><b><t t-esc="sales_summary['total_products_sold']"/></b></h4>
+                </div>
+            </div>
+            <div class="card total-sales-card" >
+                <div class="container">
+                    <div class="icon-container">
+                        <img src="advance_sales_dashboard/static/img/total_sales.png" style="height: 38px; border-radius: 20px;"/>
+                    </div>
+                    <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Total Sales</b></h4><h4 style="text-align: right;"><b><t t-esc="sales_summary['formatted_total_sale_amount']"/></b></h4>
+                </div>
+            </div>
+            <div class="card total-revenue-card" >
+                <div class="container">
+                    <div class="icon-container">
+                                    <img src="advance_sales_dashboard/static/img/revenue.png" style="height: 38px; border-radius: 20px;"/>
+                    </div>
+                    <h4 style="text-align:right;font-family: ui-monospace; font-size: 20px;"><b>Total Revenue</b></h4>
+                    <h4 style="text-align: right;"><b><t t-esc="sales_summary['total_revenue']"/></b></h4>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="QuotationStatusRow">
+            <div class="quotation">Quotation
+                <a id="view_sales_status_records" t-attf-data-ids="{{quotation_ids}}" type="button">
+                    <t t-esc="o_quotation"/>
+                </a>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" t-attf-style="width: {{o_quotation_percent}}%; background-color: #310b70a1">
+                    <t t-esc="o_quotation_percent"/>%
+                </div>
+            </div>
+    </t>
+    <t t-name="SentStatusRow">
+            <div class="sent">Sent
+                <a id="view_sales_status_records" t-attf-data-ids="{{sent_ids}}" type="button">
+                    <t t-esc="o_sent"/>
+                </a>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" t-attf-style="width: {{o_sent_percent}}%; background-color: #a19a05cc">
+                    <t t-esc="o_sent_percent"/>%
+                </div>
+            </div>
+    </t>
+    <t t-name="SaleStatusRow">
+            <div class="sale">Sale
+                <a id="view_sales_status_records" t-attf-data-ids="{{sale_ids}}" type="button">
+                    <t t-esc="o_sale"/>
+                </a>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" t-attf-style="width: {{o_sale_percent}}%; background-color: #0d8528">
+                    <t t-esc="o_sale_percent"/>%
+                </div>
+            </div>
+    </t>
+    <t t-name="DoneStatusRow">
+        <div class="done">Done
+            <a id="view_sales_status_records" t-attf-data-ids="{{done_ids}}" type="button">
+                <t t-esc="o_done"/>
+            </a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" t-attf-style="width: {{o_done_percent}}%; background-color: #0d8528">
+                <t t-esc="o_done_percent"/>%
+            </div>
+        </div>
+    </t>
+    <t t-name="CancelStatusRow">
+            <div class="cancel">Cancel
+                <a id="view_sales_status_records" t-attf-data-ids="{{cancel_ids}}" type="button">
+                    <t t-esc="o_cancel"/>
+                </a>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" t-attf-style="width: {{o_cancel_percent}}%; background-color: #7e0606">
+                    <t t-esc="o_cancel_percent"/>%
+                </div>
+            </div>
+    </t>
+    <t t-name="UpsellingStatusRow">
+        <div class="upselling">Upselling
+            <a id="view_sales_status_records" t-attf-data-ids="{{upselling_ids}}" type="button">
+                <t t-esc="o_upselling"/>
+            </a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"
+                 t-attf-style="width: {{o_upselling_percent}}%; background-color : #310b70a1">
+                <t t-esc="o_upselling_percent"/>%
+            </div>
+        </div>
+    </t>
+    <t t-name="InvoiceStatusRow">
+        <div class="invoiced">Invoiced
+            <a id="view_sales_status_records" t-attf-data-ids="{{invoiced_ids}}" type="button">
+                <t t-esc="o_invoiced"/>
+            </a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"
+                 t-attf-style="width: {{o_invoiced_percent}}%;background-color : #310b70a1">
+                <t t-esc="o_invoiced_percent"/>%
+            </div>
+        </div>
+    </t>
+    <t t-name="ToInvoiceStatusRow">
+        <div class="to_invoice">To Invoice
+            <a id="view_sales_status_records" t-attf-data-ids="{{to_invoice_ids}}" type="button">
+                <t t-esc="o_to_invoice"/>
+            </a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"
+                 t-attf-style="width: {{o_to_invoice_percent}}%;background-color : #310b70a1">
+                <t t-esc="o_to_invoice_percent"/>%
+            </div>
+        </div>
+    </t>
+    <t t-name="NoToInvoiceStatusRow">
+        <div class="no">Nothing To Invoice
+            <a id="view_sales_status_records" t-attf-data-ids="{{no_ids}}" type="button">
+                <t t-esc="o_no"/>
+            </a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"
+                 t-attf-style="width: {{o_no_percent}}%;background-color : #310b70a1">
+                <t t-esc="o_no_percent"/>%
+            </div>
+        </div>
+    </t>
+    <t t-name="TotalSalesStatusRow">
+        <div class="status-card-header">Total Sales
+            <a id="view_sales_status_records" t-attf-data-ids="{{total_sales_ids}}" type="button">
+                <t t-esc="total_sales"/></a>
+        </div>
+    </t>
+
+</templates>
+
+
+    <!-- Left side: Pie Chart -->
+<!--    <div class="col-md-6">-->
+<!--        <div class="chart_card" style="height: 104%;background-color: white;width: 81%;">-->
+<!--            <div class="chart_card-body">-->
+<!--                <h4 class="chart_card-title">Weekly Top Products By Value Pie Chart</h4>-->
+<!--                <div class="chart_card-container" style="position: relative;height: 460px;">-->
+<!--                    <canvas id="topproductsweeklypiechart" style="display: block; box-sizing: border-box; height: 460px; width: 460px;" width="460" height="460"></canvas>                </div>-->
+<!--                </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <!-- Right side: Line Chart (upper) and Bar Chart (lower) -->

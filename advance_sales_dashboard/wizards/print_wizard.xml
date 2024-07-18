@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_print_wizard_form" model="ir.ui.view">
+        <field name="name">view_print_wizard_form</field>
+        <field name="model">print.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="3">
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="sale_order_id" attrs="{'invisible': ['|',('multi_sale_order', '=', True),('all_sales', '=', True),]}"/>
+                            <field name="sale_order_ids"
+                                   attrs="{'invisible': ['|',('multi_sale_order', '!=', True),('all_sales', '=', True),]}" widget="many2many_tags"/>
+                            <field name="multi_sale_order" attrs="{'invisible': [('all_sales', '=', True)]}"/>
+                            <field name="all_sales" attrs="{'invisible': [('multi_sale_order', '=', True)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+                    <footer>
+                        <button name="button_print_report" string="PRINT EXCEL" type="object" class="button"/>
+                        <button string="CANCEL" class="button_cancel" special="cancel"/>
+                    </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_print_wizard" model="ir.actions.act_window">
+        <field name="name">Print Wizard</field>
+        <field name="res_model">print.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="view_print_wizard_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_sales_dynamic_report"
+              name="Sales Dynamic Report"
+              action="action_print_wizard"
+              parent="sale.menu_sale_report"
+              />
+
+    <record id="sale_order_inherited_tree_view" model="ir.ui.view">
+           <field name="name">sale.order.view.tree.inherit</field>
+           <field name="model">sale.order</field>
+           <field name="inherit_id" ref="sale.view_quotation_tree"/>
+           <field name="arch" type="xml">
+               <xpath expr="//tree" position="attributes">
+                   <attribute name="js_class">button_in_tree</attribute>
+               </xpath>
+           </field>
+    </record>
+
+</odoo>

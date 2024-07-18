@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="model_sales_orders" model="search.record">
+        <field name="name">Sales Order</field>
+        <field name="model_name">sale.order</field>
+    </record>
+    <record id="model_account_moves" model="search.record">
+        <field name="name">Account Move</field>
+        <field name="model_name">account.move</field>
+    </record>
+    <record id="model_res_partners" model="search.record">
+        <field name="name">Res Partner</field>
+        <field name="model_name">res.partner</field>
+    </record>
+    <record id="model_product_templates_new" model="search.record">
+        <field name="name">Product Template</field>
+        <field name="model_name">product.template</field>
+    </record>
+</odoo>
