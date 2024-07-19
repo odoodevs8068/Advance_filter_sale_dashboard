@@ -39,5 +39,6 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
+    'images': ['static/description/assets/screenshots/banner.png'],
 }
