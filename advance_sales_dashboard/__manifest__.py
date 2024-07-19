@@ -5,7 +5,7 @@
     'sequence': 5,
     'author': "JD DEVS",
     'currency': "USD",
-    'price': "20.0",
+    'price': "5.0",
     'depends': ['base', 'sale', 'account', 'report_xlsx', 'product'],
     'data': [
         'views/dashboards.xml',
