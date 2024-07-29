@@ -4,8 +4,6 @@
     'summary': 'Advance Sales Dashboard With Multi Filter Options/Dashboard PDF/XLSX Report/Yearly Chart Views',
     'sequence': 5,
     'author': "JD DEVS",
-    'currency': "USD",
-    'price': "5.0",
     'depends': ['base', 'sale', 'account', 'report_xlsx', 'product'],
     'data': [
         'views/dashboards.xml',
